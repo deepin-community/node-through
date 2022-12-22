@@ -1,0 +1,33 @@
+Source: node-through
+Section: javascript
+Priority: optional
+Maintainer: Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>
+Uploaders: Thorsten Alteholz <debian@alteholz.de>
+Build-Depends: debhelper-compat (= 13)
+ , dh-sequence-nodejs
+ , node-tape <!nocheck>
+Standards-Version: 4.5.1
+Vcs-Browser: https://salsa.debian.org/js-team/node-through
+Vcs-Git: https://salsa.debian.org/js-team/node-through.git
+Homepage: https://github.com/dominictarr/through
+Testsuite: autopkgtest-pkg-nodejs
+Rules-Requires-Root: no
+
+Package: node-through
+Architecture: all
+Depends: ${misc:Depends}
+Multi-Arch: foreign
+Provides: ${nodejs:Provides}
+Description: simplified stream construction
+ Easy way to create a Stream that is both readable and writable.
+ .
+    Pass in optional write and end methods.
+    through takes care of pause/resume logic if you use this.queue(data)
+    instead of this.emit('data', data).
+    Use this.pause() and this.resume() to manage flow.
+    Check this.paused to see current flow state.
+    (write always returns !this.paused).
+ .
+ This function is the basis for most of the synchronous streams in event-stream.
+ .
+ Node.js is an event-based server-side JavaScript engine.

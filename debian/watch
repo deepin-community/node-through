@@ -1,0 +1,13 @@
+version=4
+# It is not recommended use fakeupstream. Please investigate more.
+# Take a look at https://wiki.debian.org/debian/watch/
+# See also fakeupstream: http://anonscm.debian.org/viewvc/qa/trunk/cgi-bin/fakeupstream.cgi?view=markup
+opts=\
+dversionmangle=s/\+(debian|dfsg|ds|deb)(\.\d+)?$//,\
+filenamemangle=s/.*=// \
+ http://qa.debian.org/cgi-bin/fakeupstream.cgi?upstream=npmjs/through .*=through-(\d.*)\.(?:tgz|tar\.(?:gz|bz2|xz)) group
+
+# It is not recommended use npmregistry. Please investigate more.
+# Take a look at https://wiki.debian.org/debian/watch/
+opts="searchmode=plain,component=types-through,ctype=nodejs,pgpmode=none" \
+ https://registry.npmjs.org/@types/through https://registry.npmjs.org/@types/through/-/through-([\d\.]+)@ARCHIVE_EXT@ checksum
